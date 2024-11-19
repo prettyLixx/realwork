@@ -1,0 +1,56 @@
+Git是一款分布式版本控制系统，用于跟踪和协调项目中的文件更改。以下是Git的一些常用指令及其功能：
+
+一、初始化与克隆仓库
+git init：在当前目录新建一个Git仓库。也可以指定项目名称进行初始化，如git init [project-name]。
+git clone [url]：克隆一个远程仓库到本地。
+二、配置
+git config：用于修改Git配置文件。
+查看配置：git config [--local][--global][--system] --list
+设置当前项目的用户名：git config --local user.name [用户名]
+配置当前用户的编码项，可以解决中文编码问题：git config --global core.quotepath false
+其他配置选项可以根据需要进行设置。
+三、查看状态与日志
+git status：查看工作区和暂存区的状态。使用-s或--short选项可以查看更加简洁的状态信息。
+git log：查看提交历史。可以使用--graph选项将日志显示为图形，更直观地查看分支和合并情况。
+git reflog：查看引用日志，记录了所有HEAD的移动历史，可以用来恢复丢失的提交或分支。
+四、分支管理
+git branch：查看、创建和删除分支。
+查看当前分支：git branch
+查看所有分支（包括远程分支）：git branch -a
+创建新分支：git branch [branch-name]
+切换分支：git checkout [branch-name]
+创建并切换分支：git checkout -b [branch-name]
+删除分支：git branch -d [branch-name]（仅当分支已合并时有效），强制删除分支使用-D选项。
+git merge：合并分支，将指定分支的更改合并到当前分支。
+git rebase：变基操作，将当前分支的基点移动到指定分支的最新提交上，用于简化历史记录。注意不要在主分支上使用rebase，以避免历史记录的混乱。
+五、代码提交与推送
+git add：将工作区的修改添加到暂存区。
+添加指定文件：git add [file-name1] [file-name2] ...
+添加所有修改的文件：git add .
+添加被修改和被删除的文件，不包括新增的文件：git add -u
+添加所有变更（包括新增、修改和删除的文件）：git add -A
+git commit：将暂存区的修改提交到本地仓库。
+提交并添加提交信息：git commit -m "[message]"
+将工作区的修改直接提交（跳过暂存区）：git commit -a -m '[message]'
+修正最后一次提交（添加遗漏的文件或修改提交信息）：git commit --amend
+git push：将本地仓库的修改推送到远程仓库。
+推送当前分支到远程仓库：git push
+推送指定分支到远程仓库：git push origin [branch-name]
+强制推送：git push --force或git push -f（谨慎使用，会覆盖远程仓库的更改）
+删除远程分支：git push origin --delete [branch-name]
+六、代码拉取与更新
+git pull：从远程仓库拉取代码并合并到当前分支。
+拉取最新代码：git pull
+拉取指定分支的代码：git pull origin [branch-name]
+git fetch：从远程仓库获取最新分支信息，但不合并到当前分支。可以使用-p选项删除远程仓库已经不存在的分支。
+七、文件操作
+git rm：从版本库中删除文件。
+git mv：移动或重命名文件。
+八、其他高级操作
+git stash：将当前工作区的修改缓存起来，以便稍后恢复。
+缓存修改：git stash
+弹出缓存的修改：git stash pop或git stash apply
+删除缓存的修改：git stash drop
+git grep：在Git仓库中搜索特定字符串或代码片段。
+git rev-list：列出Git仓库中的修订记录，可以与xargs和git grep等命令结合使用进行高级搜索。
+这些指令是Git的基本和常用操作，熟练掌握这些指令可以大大提高版本控制的效率和准确性。
